@@ -1,0 +1,14 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+    delete firewall.IStore
+    set firewall.IStore=rule
+    set firewall.IStore.name="IStore"
+    set firewall.IStore.target="ACCEPT"
+    set firewall.IStore.src="wan"
+    set firewall.IStore.dest_port="1024-65535"
+    set firewall.IStore.enabled="0"
+    commit firewall
+EOF
+
+exit 0
