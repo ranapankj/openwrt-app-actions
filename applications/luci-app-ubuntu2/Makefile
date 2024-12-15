@@ -2,22 +2,20 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_VERSION:=1.0.2-20241211
+PKG_VERSION:=1.0.3-20241215
 PKG_RELEASE:=
 
-LUCI_TITLE:=LuCI support for bmtedge
+LUCI_TITLE:=LuCI support for Ubuntu2
 LUCI_PKGARCH:=all
 LUCI_DEPENDS:=+lsblk +docker +luci-lib-taskd
 
-define Package/luci-app-bmtedge/conffiles
-/etc/config/bmtedge
+define Package/luci-app-ubuntu2/conffiles
+/etc/config/ubuntu2
 endef
 
-# prerm
-# postrm
-define Package/luci-app-bmtedge/prerm
+define Package/luci-app-ubuntu2/prerm
 #!/bin/sh
-/root/usr/libexec/istorec/bmtedge.sh rm
+/usr/libexec/istorec/ubuntu2.sh stop
 exit 0
 endef
 
